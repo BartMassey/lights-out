@@ -1,4 +1,4 @@
-use rand::{Rng, thread_rng, seq::SliceRandom};
+use rand::{seq::SliceRandom, thread_rng, Rng};
 use std::io::BufRead;
 
 fn main() {
@@ -29,7 +29,10 @@ fn main() {
     }
     let lines = std::io::BufReader::new(std::io::stdin());
     let mut lines = lines.lines();
-    println!("lights out: enter light number from 1 to {} and press return", n);
+    println!(
+        "lights out: enter light number from 1 to {} and press return",
+        n
+    );
     while goal != 0 {
         let mut lights = String::new();
         for i in 0..n {
@@ -40,7 +43,8 @@ fn main() {
             }
         }
         println!("{}", lights);
-        let choice: usize = lines.next().unwrap().unwrap().parse().unwrap();
+        let choice: usize =
+            lines.next().unwrap().unwrap().parse().unwrap();
         if choice < 1 || choice > n {
             println!("nope");
             continue;
